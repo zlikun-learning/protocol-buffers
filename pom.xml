@@ -12,6 +12,7 @@
     <modules>
         <module>protobuf-usage</module>
         <module>protobuf-usage-2</module>
+        <module>protobuf-benchmark</module>
     </modules>
 
     <properties>

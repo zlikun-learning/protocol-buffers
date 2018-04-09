@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.zlikun.learning</groupId>
+        <artifactId>protocol-buffers</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>protobuf-benchmark</artifactId>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/proto</directory>
+                <includes>
+                    <include>**/*.proto</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.xolstice.maven.plugins</groupId>
+                <artifactId>protobuf-maven-plugin</artifactId>
+                <version>0.5.1</version>
+                <!-- https://www.xolstice.org/protobuf-maven-plugin/compile-mojo.html -->
+                <configuration>
+                    <!-- 配置 protoc 程序的路径(这里配置了环境变量，所以可以直接使用) -->
+                    <protocExecutable>protoc</protocExecutable>
+                    <!-- 配置.proto文件目录 -->
+                    <protoSourceRoot>${project.basedir}/src/main/proto</protoSourceRoot>
+                    <!-- 配置生成Java文件目录 -->
+                    <outputDirectory>${project.build.sourceDirectory}</outputDirectory>
+                    <!-- 配置在生成Java文件前清空outputDirectory中的文件 -->
+                    <clearOutputDirectory>false</clearOutputDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
