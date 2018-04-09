@@ -1,0 +1,52 @@
+// PB分2版和3版，如果使用3版，需要指定语法为"proto3"，否则不需要指定
+// 且该语句必须为非空、非注释的第一行
+syntax = "proto3";
+
+// message用于定义一个数据结构(类)
+// 对Java来说，编译器为每一个消息类型生成一个.java文件，以及一个特殊的Builder类(用于创建消息实例接口)
+message SearchRequest {
+
+    /* ----------------------------------------------------------------------------------------------------------------
+    // 每个字段都有一个惟一的数字标识符，用于在消息的二进制格式中识别字段，一旦定义就能不再改变(会影响已经生成过的数据)，
+    // 注：[1,15]内的标识号在编码时占用一个字节，[16,2047]则占两个字节，实际可取值范围：[1,2^29 - 1]，但不能用[19000,19999]区间内的标识号，这些是预留标识号
+    // 指定的消息字段必须是如下之一：
+    // required 一个格式良好的消息一定要包含1个这种字段
+    // optional 一个格式良好的消息可以有0个或1个这种字段，但不超过1人
+    // repeated 一个格式良好的消息中，这种字段可以重复任意次(含0次)，重复的值的顺序会被保留
+    // 基本数值类型的repeated的字段并没有被尽可能地高效编码，用户应该使用特殊选项[packed=true]来保证更高效的编码
+    // repeated int32 samples = 4 [packed=true];
+    // 注：目前新版中optional和required都被去掉了，只保留了repeated标记数组类型，[default = xxx]也被废弃了
+     ---------------------------------------------------------------------------------------------------------------- */
+
+    string query = 1;
+    int32 page_number = 2;
+    int32 result_per_page = 3;
+
+    // 定义一个枚举类型
+    enum Corpus {
+        // There must be a zero value, so that we can use 0 as a numeric default value.
+        // The zero value needs to be the first element
+        UNIVERSAL = 0;
+        WEB = 1;
+        IMAGES = 2;
+        LOCAL = 3;
+        NEWS = 4;
+        PRODUCTS = 5;
+        VIDEO = 6;
+    }
+
+    // 定义一个枚举字段
+    Corpus corpus = 4;
+
+}
+
+// 导入定义
+import "Result.proto";
+// import public "Result.proto";
+
+// 可以在一个.proto文件中定义多个消息类型
+message SearchResponse {
+    repeated Result resultes = 1;
+    // 使用父类里的子类，需要使用父类限定名
+    SearchRequest.Corpus corpus = 2;
+}
