@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package com.zlikun.learning.proto;
+option java_outer_classname = "UserInfo";
+
+message User {
+
+    int64 id = 1;
+    string name = 2;
+    Gender gender = 3;
+    // 兴趣爱好，数组结构
+    repeated string hobbies = 4;
+    // 社交帐号，映射结构：<平台名称, 平台帐号>
+    map<string, string> socials = 5;
+
+}
+
+enum Gender {
+    MALE = 0;
+    FEMALE = 1;
+}

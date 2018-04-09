@@ -3,6 +3,8 @@
 - <https://developers.google.cn/protocol-buffers/>
 - <https://developers.google.cn/protocol-buffers/docs/proto3>
 - <https://developers.google.cn/protocol-buffers/docs/encoding>
+- <https://developers.google.cn/protocol-buffers/docs/javatutorial>
+- <https://developers.google.cn/protocol-buffers/docs/reference/java-generated>
 - <https://blog.csdn.net/u011518120/article/details/54604615>
 
 ```xml
@@ -38,3 +40,6 @@
 $ protoc --proto_path=IMPORT_PATH --java_out=DST_DIR path/to/file.proto
 $ protoc --proto_path=./ --java_out ./ DataMap.proto
 ```
+
+#### 与Maven集成
+- <https://www.xolstice.org/protobuf-maven-plugin/index.html>

@@ -9,7 +9,17 @@
         <version>1.0.0</version>
     </parent>
 
-    <artifactId>protobuf-usage</artifactId>
+    <artifactId>protobuf-usage-2</artifactId>
 
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/proto</directory>
+                <includes>
+                    <include>**/*.proto</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
 
 </project>
