@@ -5,6 +5,7 @@
 - <https://developers.google.cn/protocol-buffers/docs/encoding>
 - <https://developers.google.cn/protocol-buffers/docs/javatutorial>
 - <https://developers.google.cn/protocol-buffers/docs/reference/java-generated>
+- <https://www.xolstice.org/protobuf-maven-plugin/index.html>
 - <https://blog.csdn.net/u011518120/article/details/54604615>
 
 ```xml
